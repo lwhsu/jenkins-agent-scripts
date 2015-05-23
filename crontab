@@ -1,2 +1,2 @@
-@reboot      daemon -cf /jenkins/keepalive.sh
-*/10 * * * * daemon -cf /jenkins/keepalive.sh
+@reboot		/usr/sbin/daemon -cf /jenkins/keepalive.sh
+*/10 * * * *	/usr/sbin/daemon -cf /jenkins/keepalive.sh
