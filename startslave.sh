@@ -2,7 +2,7 @@
 
 slavename=`/bin/hostname`
 
-cd /jenkins || exit 1
+cd /usr/local/jenkins/jenkins-slave-scripts || exit 1
 while [ ! -f salve.dontstart ]
 do
 	/bin/date

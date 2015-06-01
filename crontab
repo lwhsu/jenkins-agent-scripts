@@ -1,2 +1,2 @@
-@reboot		/usr/sbin/daemon -cf /jenkins/keepalive.sh
-*/10 * * * *	/usr/sbin/daemon -cf /jenkins/keepalive.sh
+@reboot		/usr/sbin/daemon -cf /usr/local/jenkins/jenkins-slave-scripts/keepalive.sh
+*/10 * * * *	/usr/sbin/daemon -cf /usr/local/jenkins/jenkins-slave-scripts/keepalive.sh
