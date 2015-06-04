@@ -1,8 +1,10 @@
 #! /bin/sh
 
+export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+
 slavename=`/bin/hostname`
 
-cd /usr/local/jenkins/jenkins-slave-scripts || exit 1
+cd /jenkins/jenkins-slave-scripts || exit 1
 
 if [ -f slave.secret ]; then
 	secret=`cat slave.secret`
