@@ -13,7 +13,7 @@ else
 	exit 1
 fi
 
-while [ ! -f salve.dontstart ]
+while [ ! -f slave.dontstart ]
 do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
