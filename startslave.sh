@@ -2,6 +2,7 @@
 
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 
+mastername="jenkins-master.freebsd.org"
 slavename=`/bin/hostname`
 
 cd /jenkins/jenkins-slave-scripts || exit 1
@@ -17,10 +18,10 @@ while [ ! -f slave.dontstart ]
 do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
-	/usr/bin/fetch -m -o slave.jar http://jenkins-master.freebsd.org/jnlpJars/slave.jar
+	/usr/bin/fetch -m -o slave.jar http://${mastername}/jnlpJars/slave.jar
 	/usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
 		-jar slave.jar \
-		-jnlpUrl http://jenkins-master.freebsd.org/computer/${slavename}/slave-agent.jnlp \
+		-jnlpUrl http://${mastername}/computer/${slavename}/slave-agent.jnlp \
 		-secret ${secret}
 	/bin/sleep 30
 done
