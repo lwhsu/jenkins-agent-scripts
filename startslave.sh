@@ -2,7 +2,7 @@
 
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 
-mastername="jenkins-master.freebsd.org"
+mastername="jenkins.freebsd.org"
 slavename=`/bin/hostname`
 
 cd /jenkins/jenkins-slave-scripts || exit 1
