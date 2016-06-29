@@ -18,10 +18,10 @@ while [ ! -f slave.dontstart ]
 do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
-	/usr/bin/fetch -m -o slave.jar http://${mastername}/jnlpJars/slave.jar
+	/usr/bin/fetch -m -o slave.jar https://${mastername}/jnlpJars/slave.jar
 	/usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
 		-jar slave.jar \
-		-jnlpUrl http://${mastername}/computer/${slavename}/slave-agent.jnlp \
+		-jnlpUrl https://${mastername}/computer/${slavename}/slave-agent.jnlp \
 		-secret ${secret}
 	/bin/sleep 30
 done
