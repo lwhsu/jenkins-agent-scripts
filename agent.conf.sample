@@ -1,2 +1,3 @@
 master="jenkins.example.org"
+slavename="slave.name"
 secret="this-is-secret"

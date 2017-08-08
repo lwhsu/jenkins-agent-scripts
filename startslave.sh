@@ -16,7 +16,9 @@ for i in master secret; do
 	fi
 done
 
-slavename=`/bin/hostname`
+if [ -z "${slavename}" ]; then
+	slavename=`/bin/hostname`
+fi
 
 while [ ! -f slave.dontstart ]
 do
