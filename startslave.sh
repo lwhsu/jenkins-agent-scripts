@@ -2,7 +2,7 @@
 
 export PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 
-cd /jenkins/jenkins-slave-scripts || exit 1
+cd /jenkins/jenkins-agent-scripts || exit 1
 
 if [ -r agent.conf ]; then
 	. agent.conf
@@ -16,18 +16,18 @@ for i in master secret; do
 	fi
 done
 
-if [ -z "${slavename}" ]; then
-	slavename=`/bin/hostname`
+if [ -z "${agentname}" ]; then
+	agentname=`/bin/hostname`
 fi
 
-while [ ! -f slave.dontstart ]
+while [ ! -f agent.dontstart ]
 do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
-	/usr/bin/fetch -m -o slave.jar https://${master}/jnlpJars/slave.jar
+	/usr/bin/fetch -m -o agent.jar https://${master}/jnlpJars/agent.jar
 	/usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
-		-jar slave.jar \
-		-jnlpUrl https://${master}/computer/${slavename}/slave-agent.jnlp \
+		-jar agent.jar \
+		-jnlpUrl https://${master}/computer/${agentname}/agent-agent.jnlp \
 		-secret ${secret}
 	/bin/sleep 30
 done
