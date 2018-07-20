@@ -1,3 +1,4 @@
 master="jenkins.example.org"
 agentname="agent.name"
 secret="this-is-secret"
+nice_increment=0

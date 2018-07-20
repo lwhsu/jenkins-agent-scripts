@@ -20,12 +20,16 @@ if [ -z "${agentname}" ]; then
 	agentname=`/bin/hostname`
 fi
 
+if [ -n "${nice_increment}" -a ${nice_increment} -ne 0 ]; then
+	NICE_CMD="/usr/bin/nice -n ${nice_increment}"
+fi
+
 while [ ! -f agent.dontstart ]
 do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
 	/usr/bin/fetch -m -o agent.jar https://${master}/jnlpJars/agent.jar
-	/usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
+	${NICE_CMD} /usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
 		-jar agent.jar \
 		-jnlpUrl https://${master}/computer/${agentname}/agent-agent.jnlp \
 		-secret ${secret}
