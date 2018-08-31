@@ -31,7 +31,7 @@ do
 	/usr/bin/fetch -m -o agent.jar "https://${master}/jnlpJars/agent.jar"
 	${NICE_CMD} /usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
 		-jar agent.jar \
-		-jnlpUrl "https://${master}/computer/${agentname}/agent-agent.jnlp" \
+		-jnlpUrl "https://${master}/computer/${agentname}/slave-agent.jnlp" \
 		-secret "${secret}"
 	/bin/sleep 30
 done
