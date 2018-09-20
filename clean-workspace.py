@@ -63,7 +63,7 @@ while True:
         jail_job_name = jail_fs.split('/')[3]
         if jail_job_name not in in_exec:
             print('delete {}'.format(jail_fs))
-            cmd_destroy = 'zfs destroy {}'.format(jail_fs)
+            cmd_destroy = 'sudo zfs destroy {}'.format(jail_fs)
             p2 = subprocess.Popen(cmd_destroy.split(), stdout=subprocess.PIPE)
 
     time.sleep(600)
