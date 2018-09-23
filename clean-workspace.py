@@ -41,10 +41,18 @@ url = "{}/computer/{}/api/json?tree=executors[currentExecutable[url]]".format(
         jenkins_url, computer)
 
 while True:
-    url_data = urllib.request.urlopen(url)
-    content = url_data.read()
-    json_data = json.loads(content.decode('utf-8'))
-    executors = json_data['executors']
+    while True:
+        try:
+            url_data = urllib.request.urlopen(url)
+            content = url_data.read()
+            json_data = json.loads(content.decode('utf-8'))
+            executors = json_data['executors']
+        except Exception as e:
+            print("Error: {}".format(e))
+            time.sleep(300)
+            continue
+        else:
+            break
 
     in_exec = set()
     for e in executors:
