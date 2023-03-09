@@ -29,7 +29,9 @@ do
 	/bin/date
 	# mirror mode, update it if there's a timestamp change on the master
 	/usr/bin/fetch -m -o agent.jar "https://${master}/jnlpJars/agent.jar"
-	${NICE_CMD} /usr/local/bin/java -Djava.net.preferIPv6Addresses=true \
+	${NICE_CMD} /usr/local/bin/java \
+		-Djava.net.preferIPv6Addresses=true \
+		-Djava.net.preferIPv4Stack=false \
 		-jar agent.jar \
 		-jnlpUrl "https://${master}/computer/${agentname}/jenkins-agent.jnlp" \
 		-secret "${secret}"
